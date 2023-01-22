@@ -1,0 +1,16 @@
+Dazzle Website Project!
+
+Trello Board here: ___
+
+Summary:
+I intend to create a simple web app for use by Alex and me. The prototype of this web app will allow Alex to upload images, GIFs, or animations,
+and allow me to upload coordinating mp3's for those visual ideas.
+
+Future Considerations:
+One direction this could build to (off the top of my head), is a simple video game that allows Alex to upload the characters he wants to use.
+Another could be something to do with generative art where the audio plays with the JPG that's been uploaded, etc.
+
+v0:
+For v0, I'd like to have a simple and clean design which allows for jpg and mp3 upload in groups from two Admins (Alex and me).
+I'd also like to procure some dazzle-esque web domain to host this on, and figure out the annual cost to run a remote server for this site through AWS.
+

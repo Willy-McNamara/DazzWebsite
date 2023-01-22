@@ -1,0 +1,201 @@
+/* ======== Palette ======== */
+/*
+Blue - 6EA4BB
+Grey - E7E7E6
+Black - 464646
+Red - C04C4B
+Gold/Tan - F0DBA5
+*/
+/* ======== Top Level ======== */
+
+#body {
+  margin: 0;
+  font-family: 'Oswald', sans-serif;
+}
+
+#root {
+  height: 100vw;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  background-color: black;
+}
+
+.horiFlex {
+  display: flex;
+  flex-direction: row;
+  margin: 1vw;
+  justify-content: space-evenly;
+  align-content: center;
+}
+
+.vertiFlex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pm {
+  padding: 1vw;
+  margin: 1vw;
+}
+
+.btn {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1vw;
+  border: solid 0.3vw #F0DBA5;
+  box-shadow: 0.15vw 0.3vw #464646;
+}
+
+.btn:hover {
+  transform: translate(0.15vw, 0.3vw);
+  box-shadow: none;
+
+}
+/* ======== INTRO.JSX ======== */
+
+#zoomContainer {
+  position: absolute;
+  width: 100vw;
+  height: 100%;
+  display: grid;
+}
+
+#greeting {
+  color: white;
+  position: absolute;
+  top: 24.2vw;
+  left: 51.8vw;
+  z-index: 10;
+  font-size: 1.3vw;
+  opacity: 0;
+  cursor: pointer;
+  transition: opacity ease-in 100ms;
+}
+
+#greeting:hover {
+  opacity: 1;
+  transition: opacity ease-in 200ms;
+}
+
+.loginModal {
+  display: none;
+  position: fixed;
+  z-index: 20;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  justify-content: center;
+}
+
+.loginModalContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: space-between;
+  justify-self: center;
+  align-self: center;
+  color: black;
+  width: 30vw;
+  height: 17vw;
+  border: solid 5px #E7E7E6;
+  background-color: #6EA4BB;
+}
+
+.loginInput {
+  width: 15vw;
+  height: 1.5vw;
+}
+
+#idkButton {
+  width: 15vw;
+  align-self: center;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1vw;
+}
+
+#booyahButton {
+  width: 4vw;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1vw;
+}
+
+#mayI {
+  font-weight: 600;
+  font-size: 3vw;
+}
+
+/* ======== ADMIN.JSX ======== */
+
+.admin {
+  background-color: #464646;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+}
+
+#adminNav {
+  width: 60vw;
+  padding: 1vw;
+  margin: 5vw;
+}
+
+.navButton {
+  width: 5vw;
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.5vw;
+}
+
+.dazzlePreamble {
+  white-space: pre-wrap;
+  width: 60vw;
+  padding: 1vw;
+  margin: 1vw;
+  font-size: 1.7vw;
+}
+
+.adminUpload {
+  width: 60vw;
+  padding: 1vw;
+  font-size: 1.8vw;
+}
+
+.icy {
+  border: solid 0.6vw #F0DBA5;
+  background-color:#6EA4BB;
+  box-shadow: 0.3vw 0.6vw #C04C4B;
+}
+
+.spicy {
+  border: solid 0.6vw #F0DBA5;
+  background-color: #C04C4B;
+  box-shadow: 0.3vw 0.6vw #6EA4BB;
+}
+
+#dazzTitle {
+  font-family: 'Oswald', sans-serif;
+  text-align: center;
+}
+
+.dazzGal {
+  width: 60vw;
+  padding: 1vw;
+  font-size: 1.8vw;
+}
+
+#icyThumbnail {
+  width: 30vw;
+  height: auto;
+  object-fit: contain;
+}
+/* ======== GALLERY.JSX ======== */
+
+.gallery {
+  background-color: #464646;
+  height: 100%;
+  width: 100%;
+}
