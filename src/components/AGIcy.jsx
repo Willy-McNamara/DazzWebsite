@@ -1,32 +1,39 @@
 import React from "react";
 import {useState, useEffect} from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import styled from 'styled-components';
 
-const AGIcy = ({icy, index}) => {
+const AGIcy = ({icy, index, handleInspect}) => {
   // get list of spicys from db and assign is to state
 
-  console.log('here is icy in AGIcy :', icy)
-  const align = index % 2 === 1 ? 'flex-end' : 'flex-start';
+  let handleClick = (e) => {
+    e.preventDefault();
+    console.log('logging e.target.id in AGIcy click handler', e.target.id)
+    handleInspect(e.target.id);
+  }
 
-  return (
-    <Icy className="vertiFlex" align={align}>
-      <h4>{icy.icyTitle}</h4>
-      <img src={`http://localhost:3009/${icy.icyData}`} id="icyThumbnail"></img>
-      <h6>{icy.icyDesc}</h6>
-    </Icy>
-  )
+  if (index % 2 === 1) {
+    return (
+      <div className="horiFlex adminGallPiece">
+        <img src={`http://localhost:3009/${icy.Data}`} id="icyThumbnail"></img>
+        <div className="vertiFlex icyDesc">
+          <h3>{icy.icyTitle}</h3>
+          <h6>{icy.icyDesc}</h6>
+          <button className="btn" id={icy._id} onClick={handleClick}>Add to Gallery</button>
+        </div>
+      </div>
+    )
+  } else {
+    return (
+      <div className="horiFlex adminGallPiece" id={icy._id}>
+        <div className="vertiFlex icyDesc">
+          <h3>{icy.icyTitle}</h3>
+          <h6>{icy.icyDesc}</h6>
+          <button className="btn" id={icy._id} onClick={handleClick}>Add to Gallery</button>
+        </div>
+        <img src={`http://localhost:3009/${icy.Data}`} id="icyThumbnail"></img>
+      </div>
+    )
+  }
 }
 
 export default AGIcy;
-
-const Icy = styled.div.attrs(
-  ({align}) => ({
-    style: {
-      alignSelf: align,
-      alignItems: align
-    }
-  })
-)`
-  display: flex;
-`
