@@ -243,6 +243,14 @@ h6 {
 #inspectPiece {
   max-width: 50vw;
 }
+
+.spicyThumbnail {
+  width: 30vw;
+  height: 5vw;
+  margin: 1vw;
+  display: flex;
+  align-self: center;
+}
 /* ======== GALLERY.JSX ======== */
 
 .gallery {

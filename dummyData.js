@@ -18,4 +18,24 @@ const dummyIcys = [{
   Data: 'dazz3.JPG'
 }]
 
-export default { dummyIcys };
+const dummySpicys = [{
+  _id: 1,
+  dazzleID: null,
+  spicyDesc: 'head a of donna lee description',
+  spicyTitle: 'Donna Lee Head A',
+  Data: 'DonnaLeeHeadA.mp3'
+}, {
+  _id: 2,
+  dazzleID: null,
+  spicyDesc: `head b of donna lee description`,
+  spicyTitle: 'DonnaLee.mp3Head-B',
+  Data: 'DonnaLeeHeadB.mp3'
+}, {
+  _id: 3,
+  dazzleID: null,
+  spicyDesc: 'solo 1 of donna lee description',
+  spicyTitle: 'Donna Lee Solo 1',
+  Data: 'DonnaLeeSolo1.mp3'
+}]
+
+export default { dummyIcys, dummySpicys };

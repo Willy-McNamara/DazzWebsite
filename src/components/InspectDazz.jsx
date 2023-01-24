@@ -25,7 +25,8 @@ const InspectDazz = ({inspectDazz, handleInspect, id}) => {
   return (
     <div className="modal">
       <div className="inspectDazz">
-        <img src={`http://localhost:3009/${inspectDazz.Data}`} id="inspectPiece"></img>
+        {type === '.mp3' && <img src={`http://localhost:3009/${inspectDazz.Data}`} id="inspectPiece"></img>}
+        {type === '.png' && <audio controls src={`http://localhost:3009/playDummyData/${inspectDazz.Data}`} className="inspectPiece"></audio>}
         <div className="vertiFlex">
           <input type="file" id="fileUpload2" accept={type} name="Pair for Gallery" className="pm"></input>
           <textarea rows="4" cols="40" ref={descRef} placeholder="Add to the description. This will simply be appended to the description already set forth by the other dazz"></textarea>
