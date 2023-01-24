@@ -13,6 +13,10 @@ const AdminGall = ({id}) => {
 
   const handleInspect = (inspectID) => {
     console.log('handleInspect triggered, here is newSrc :', inspectID)
+    if (inspectID._id === 'init') {
+      setInspectDazz(inspectID);
+      return;
+    }
     let dazz;
     for (let i = 0; i < dazzs.length; i++) {
       if (dazzs[i]._id === Number(inspectID)) {
