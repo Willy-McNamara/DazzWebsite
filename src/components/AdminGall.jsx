@@ -32,7 +32,7 @@ const AdminGall = ({id}) => {
     }
     let dazz;
     for (let i = 0; i < dazzs.length; i++) {
-      if (dazzs[i]._id === Number(inspectID)) {
+      if (dazzs[i]._id === inspectID) {
         dazz = dazzs[i];
         break;
       }
