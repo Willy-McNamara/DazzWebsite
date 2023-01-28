@@ -1,6 +1,7 @@
 import React from "react";
 import {useState, useEffect, useRef} from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import axios from 'axios';
 
 const AdminUpload = ({id}) => {
   let descRef = useRef('')
@@ -15,7 +16,19 @@ const AdminUpload = ({id}) => {
       return;
     }
     // will eventually make axios call with the below information:
-    console.log('here is information that will be submitted on click :', titleRef.current.value, descRef.current.value, uploadFiles[0])
+    console.log('here is information that will be submitted on click :', titleRef.current.value, descRef.current.value, uploadFiles[0], type)
+
+    const formData = new FormData();
+    formData.append('file', uploadFiles[0]) // 'type' will indicate whether this file is an mp3 or png
+    formData.append("title", titleRef.current.value)
+    formData.append("description", descRef.current.value)
+    axios.post(`http://localhost:3009/AdminUpload/${type.split('.')[1]}`, formData, { headers: {'Content-Type': 'multipart/form-data'}})
+      .then((res) => {
+        console.log('server response for image formData post:')
+      })
+      .catch((err) => {
+        console.log('err in post AdminUpload :', err)
+      })
   }
 
   return (
