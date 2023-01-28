@@ -1,10 +1,8 @@
 const { S3Client, PutObjectCommand, DeleteObjectCommand, GetObjectCommand } = require("@aws-sdk/client-s3");
 const path = require('path')
+const fs = require('fs');
 
 require('dotenv').config({path: '../.env'});
-// { path: path.resolve(__dirname, '../.env') }
-
-console.log('should have .env here in s3, attempt to log process.env :', process.env);
 
 const bucketName = process.env.AWS_BUCKET_NAME
 const region = process.env.AWS_BUCKET_REGION
@@ -42,4 +40,12 @@ function deleteFile(fileName) {
   return s3Client.send(new DeleteObjectCommand(deleteParams));
 }
 
-module.exports = {uploadFile, deleteFile}
+function getFileStream(fileKey) {
+  const downloadParams = {
+    Key: fileKey,
+    Bucket: bucketName
+  }
+  return s3Client.send( new GetObjectCommand(downloadParams))
+}
+
+module.exports = {uploadFile, deleteFile, getFileStream}

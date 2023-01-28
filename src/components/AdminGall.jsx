@@ -5,11 +5,24 @@ import dummyData from '../../dummyData.js';
 import AGIcy from './AGIcy.jsx';
 import AGSpicy from './AGSpicy.jsx';
 import InspectDazz from './InspectDazz.jsx';
+import axios from 'axios';
 
 const AdminGall = ({id}) => {
   // get list of spicys from db and assign is to state
   let [dazzs, setDazzs] = useState(id === 'spicy' ? dummyData.dummyIcys : dummyData.dummySpicys);
   let [inspectDazz, setInspectDazz] = useState({_id: 'init'})
+
+  // grab media from db
+  useEffect(() => {
+    axios.get(`http://localhost:3009/adminGall/${id}`)
+      .then((res) => {
+        console.log('successful retrieval of content from db. here are icys/spicys :', res.data);
+        setDazzs(res.data);
+      })
+      .catch((err) => {
+        console.log('err getting the icys/spicys from db, :', err);
+      })
+  }, []);
 
   const handleInspect = (inspectID) => {
     console.log('handleInspect triggered, here is newSrc :', inspectID)

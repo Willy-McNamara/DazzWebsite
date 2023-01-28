@@ -14,10 +14,10 @@ const AGIcy = ({icy, index, handleInspect}) => {
   if (index % 2 === 1) {
     return (
       <div className="horiFlex adminGallPiece">
-        <img src={`http://localhost:3009/${icy.Data}`} id="icyThumbnail"></img>
+        <img src={`http://localhost:3009/stream/${icy._id}`} id="icyThumbnail"></img>
         <div className="vertiFlex icyDesc">
-          <h3>{icy.icyTitle}</h3>
-          <h6>{icy.icyDesc}</h6>
+          <h3>{icy.title}</h3>
+          <h6>{icy.desc}</h6>
           <button className="btn" id={icy._id} onClick={handleClick}>Add to Gallery</button>
         </div>
       </div>
@@ -26,11 +26,11 @@ const AGIcy = ({icy, index, handleInspect}) => {
     return (
       <div className="horiFlex adminGallPiece" id={icy._id}>
         <div className="vertiFlex icyDesc">
-          <h3>{icy.icyTitle}</h3>
-          <h6>{icy.icyDesc}</h6>
+          <h3>{icy.title}</h3>
+          <h6>{icy.desc}</h6>
           <button className="btn" id={icy._id} onClick={handleClick}>Add to Gallery</button>
         </div>
-        <img src={`http://localhost:3009/${icy.Data}`} id="icyThumbnail"></img>
+        <img src={`http://localhost:3009/stream/${icy._id}`} id="icyThumbnail"></img>
       </div>
     )
   }

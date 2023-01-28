@@ -14,10 +14,10 @@ const AGSpicy = ({spicy, index, handleInspect}) => {
   if (index % 2 === 1) {
     return (
       <div className="horiFlex adminGallPiece">
-        <audio controls src={`http://localhost:3009/playDummyData/${spicy.Data}`} className="spicyThumbnail"></audio>
+        <audio controls src={`http://localhost:3009/stream/${spicy._id}`} className="spicyThumbnail"></audio>
         <div className="vertiFlex icyDesc">
-          <h3>{spicy.spicyTitle}</h3>
-          <h6>{spicy.spicyDesc}</h6>
+          <h3>{spicy.title}</h3>
+          <h6>{spicy.desc}</h6>
           <button className="btn" id={spicy._id} onClick={handleClick}>Add to Gallery</button>
         </div>
       </div>
@@ -26,11 +26,11 @@ const AGSpicy = ({spicy, index, handleInspect}) => {
     return (
       <div className="horiFlex adminGallPiece" id={spicy._id}>
         <div className="vertiFlex spicyDesc">
-          <h3>{spicy.spicyTitle}</h3>
-          <h6>{spicy.spicyDesc}</h6>
+          <h3>{spicy.title}</h3>
+          <h6>{spicy.desc}</h6>
           <button className="btn" id={spicy._id} onClick={handleClick}>Add to Gallery</button>
         </div>
-        <audio controls src={`http://localhost:3009/playDummyData/${spicy.Data}`} className="spicyThumbnail"></audio>
+        <audio controls src={`http://localhost:3009/stream/${spicy._id}`} className="spicyThumbnail"></audio>
       </div>
     )
   }

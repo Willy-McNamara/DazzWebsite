@@ -4,7 +4,9 @@ const cors = require('cors');
 const morgan = require('morgan');
 const multer = require('multer'); // multer for letting us recieve the FormData (pngs and mp3s from the client!)
 const db = require('./db.js');
+const fs = require('fs');
 const controllers = require('./controllers.js');
+const { getFileStream } = require('./s3.js');
 
 const app = express()
 
@@ -22,13 +24,30 @@ const upload = multer({ storage: storage })
 
 // send dummy data songs
 app.get('/playDummyData/:title', (req,res)=> {
-  console.log('playDummyData triggered! here is __dirname :', __dirname)
   res.sendFile(__dirname + `/dummySongs/${req.params.title}`)
+})
+
+// grab icys or spicys from db
+app.get('/adminGall/:type', (req, res) => {
+  console.log('get adminGall reached server. here are req.params :', req.params);
+  req.params.type = req.params.type === 'icy' ? 'spicy' : 'icy';
+  controllers.handleRetrieve(req, res);
+})
+
+// stream requested file from s3
+app.get('/stream/:key', (req, res) => {
+  getFileStream(req.params.key)
+    .then((s3res) => {
+      s3res.Body.pipe(res);
+    })
+    .catch((err) => {
+      console.log('err sending stream response :', err)
+      res.send(err);
+    })
 })
 
 // route for uploads of unpaired, single icys/spicys
 app.post('/AdminUpload/:type', upload.single('file'), (req, res) => {
-  console.log('AdminUpload route hit. here is req.params.type', req.params.type);
   controllers.handleAdminUpload(req, res);
 })
 

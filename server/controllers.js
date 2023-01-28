@@ -36,4 +36,17 @@ const handleAdminUpload = async (req, res) => {
     })
 }
 
-module.exports = {handleAdminUpload}
+const handleRetrieve = (req, res) => {
+  const model = req.params.type === 'icy' ? models.Icy : models.Spicy;
+  model.find()
+    .then((dbRes) => {
+      console.log('dbRes iin handleRetrieve :', dbRes)
+      res.send(dbRes)
+    })
+    .catch((err) => {
+      console.log('err in handle retrieve, here is err :', err);
+      res.send(err);
+    })
+}
+
+module.exports = {handleAdminUpload, handleRetrieve}
