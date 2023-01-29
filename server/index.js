@@ -6,7 +6,7 @@ const multer = require('multer'); // multer for letting us recieve the FormData 
 const db = require('./db.js');
 const fs = require('fs');
 const controllers = require('./controllers.js');
-const { getFileStream } = require('./s3.js');
+const { getFileStream, deleteFile } = require('./s3.js');
 
 const app = express()
 
@@ -34,10 +34,16 @@ app.get('/adminGall/:type', (req, res) => {
   controllers.handleRetrieve(req, res);
 })
 
+// get all dazzles!
+app.get('/dazzles', (req, res) => {
+  controllers.handleGetDazzles(req, res);
+})
+
 // stream requested file from s3
 app.get('/stream/:key', (req, res) => {
   getFileStream(req.params.key)
     .then((s3res) => {
+      console.log('s3res on stream :', s3res)
       s3res.Body.pipe(res);
     })
     .catch((err) => {
@@ -49,6 +55,18 @@ app.get('/stream/:key', (req, res) => {
 // route for uploads of unpaired, single icys/spicys
 app.post('/AdminUpload/:type', upload.single('file'), (req, res) => {
   controllers.handleAdminUpload(req, res);
+})
+
+// route for adding a dazzle!
+app.post('/dazzleUpload/:type', upload.single('file'), (req, res) => {
+  console.log('req.params, and req.body in dazzleUpload:', req.params, req.body)
+  controllers.handleDazzleUpload(req, res)
+})
+// delete route
+app.delete('/:type/:id', (req, res) => {
+  //
+  console.log('logging req.params in app.delete', req.params)
+  controllers.handleDelete(req, res);
 })
 
 /* ======= ======== ======== CATCH ALL ROUTE ======== ======== ====== */
