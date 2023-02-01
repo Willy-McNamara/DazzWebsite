@@ -22,7 +22,7 @@ const AdminUpload = ({id}) => {
     formData.append('file', uploadFiles[0]) // 'type' will indicate whether this file is an mp3 or png
     formData.append("title", titleRef.current.value)
     formData.append("description", descRef.current.value)
-    axios.post(`http://localhost:3009/AdminUpload/${type.split('.')[1]}`, formData, { headers: {'Content-Type': 'multipart/form-data'}})
+    axios.post(`/AdminUpload/${type.split('.')[1]}`, formData, { headers: {'Content-Type': 'multipart/form-data'}})
       .then((res) => {
         console.log('server response for image formData post:')
       })

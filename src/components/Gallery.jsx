@@ -11,7 +11,7 @@ const Gallery = () => {
   // grab media from db
   useEffect(() => {
     console.log('use effect triggered!')
-    axios.get(`http://localhost:3009/dazzles`)
+    axios.get(`/dazzles`)
       .then((res) => {
         console.log('successful retrieval of dazzles :', res.data);
         setDazzs(res.data);

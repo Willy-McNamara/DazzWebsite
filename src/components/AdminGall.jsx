@@ -15,7 +15,7 @@ const AdminGall = ({id}) => {
 
   // grab media from db
   useEffect(() => {
-    axios.get(`http://localhost:3009/adminGall/${ID}`)
+    axios.get(`/adminGall/${ID}`)
       .then((res) => {
         console.log('successful retrieval of content from db. here are icys/spicys :', res.data);
         setDazzs(res.data);

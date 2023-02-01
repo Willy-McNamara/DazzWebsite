@@ -14,7 +14,7 @@ const AGSpicy = ({spicy, index, handleInspect}) => {
   if (index % 2 === 1) {
     return (
       <div className="horiFlex adminGallPiece">
-        <audio controls src={`http://localhost:3009/stream/${spicy._id}`} className="spicyThumbnail"></audio>
+        <audio controls src={`/stream/${spicy._id}`} className="spicyThumbnail"></audio>
         <div className="vertiFlex icyDesc">
           <h3>{spicy.title}</h3>
           <h6>{spicy.desc}</h6>
@@ -30,7 +30,7 @@ const AGSpicy = ({spicy, index, handleInspect}) => {
           <h6>{spicy.desc}</h6>
           <button className="btn" id={spicy._id} onClick={handleClick}>Add to Gallery</button>
         </div>
-        <audio controls src={`http://localhost:3009/stream/${spicy._id}`} className="spicyThumbnail"></audio>
+        <audio controls src={`/stream/${spicy._id}`} className="spicyThumbnail"></audio>
       </div>
     )
   }

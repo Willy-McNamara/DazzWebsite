@@ -24,7 +24,7 @@ const InspectDazz = ({inspectDazz, handleInspect, id}) => {
     formData.append("description", descRef.current.value)
     formData.append("origDescription", inspectDazz.desc)
     formData.append("mainID", inspectDazz._id)
-    axios.post(`http://localhost:3009/dazzleUpload/${type.split('.')[1]}`, formData, { headers: {'Content-Type': 'multipart/form-data'}})
+    axios.post(`/dazzleUpload/${type.split('.')[1]}`, formData, { headers: {'Content-Type': 'multipart/form-data'}})
       .then((res) => {
         console.log('server response for inspectDazz post:')
       })
