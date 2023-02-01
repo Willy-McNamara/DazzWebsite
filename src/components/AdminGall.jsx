@@ -9,12 +9,13 @@ import axios from 'axios';
 
 const AdminGall = ({id}) => {
   // get list of spicys from db and assign is to state
-  let [dazzs, setDazzs] = useState(id === 'spicy' ? dummyData.dummyIcys : dummyData.dummySpicys);
+  let [dazzs, setDazzs] = useState('init');
   let [inspectDazz, setInspectDazz] = useState({_id: 'init'})
+  const ID = id ? id : useParams()
 
   // grab media from db
   useEffect(() => {
-    axios.get(`http://localhost:3009/adminGall/${id}`)
+    axios.get(`http://localhost:3009/adminGall/${ID}`)
       .then((res) => {
         console.log('successful retrieval of content from db. here are icys/spicys :', res.data);
         setDazzs(res.data);
@@ -23,6 +24,7 @@ const AdminGall = ({id}) => {
         console.log('err getting the icys/spicys from db, :', err);
       })
   }, []);
+  if (dazzs === 'init') return; // return her in order to trigger the useEffect immediately, which we need to render the content!
 
   const handleInspect = (inspectID) => {
     console.log('handleInspect triggered, here is newSrc :', inspectID)
@@ -53,7 +55,7 @@ const AdminGall = ({id}) => {
     <div className={`${id} vertiFlex dazzGal`}>
       <h3>View the other dazzles work!</h3>
       <h6>Click to view in isolation, add to gallery if you've created a partner piece!</h6>
-      {inspectDazz._id !== 'init' && <InspectDazz inspectDazz={inspectDazz} handleInspect={handleInspect} id={id}/>}
+      {inspectDazz._id !== 'init' && <InspectDazz inspectDazz={inspectDazz} handleInspect={handleInspect} id={ID}/>}
       {arrOfDazz}
     </div>
   )

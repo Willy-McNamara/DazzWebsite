@@ -73,8 +73,9 @@ app.delete('/:type/:id', (req, res) => {
 
 // handle every other route with index.html, which will contain
 // a script tag to your application's JavaScript file(s).
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../public'));
+app.get('/*', (req, res) => {
+  console.log('get * path triggered...');
+  res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 
 /* ===== SET TO LISTEN ===== */

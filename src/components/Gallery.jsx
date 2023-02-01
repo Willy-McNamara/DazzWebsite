@@ -6,9 +6,11 @@ import GalleryDazz from './GalleryDazz.jsx';
 
 const Gallery = () => {
   let [dazzs, setDazzs] = useState([{_id: 'init'}]);
+  console.log('Gallery view rendered!')
 
   // grab media from db
   useEffect(() => {
+    console.log('use effect triggered!')
     axios.get(`http://localhost:3009/dazzles`)
       .then((res) => {
         console.log('successful retrieval of dazzles :', res.data);

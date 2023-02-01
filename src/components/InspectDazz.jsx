@@ -49,7 +49,7 @@ const InspectDazz = ({inspectDazz, handleInspect, id}) => {
           <input type="file" id="fileUpload2" accept={type} name="Pair for Gallery" className="pm"></input>
           <textarea rows="4" cols="40" ref={descRef} placeholder="Add to the description. This will simply be appended to the description already set forth by the other dazz"></textarea>
           <button onClick={handleSubmit} className="btn">send 'er</button>
-          <button onClick={handleExit}>actually nvm</button>
+          <button onClick={handleExit} className="btn">actually nvm</button>
         </div>
       </div>
     </div>

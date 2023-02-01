@@ -37,7 +37,7 @@ const AdminUpload = ({id}) => {
       <input type="file" id="fileUpload" accept={type} name="Upload New Dazz" className="pm"></input>
       <input type="text" ref={titleRef} placeholder="giver' name" id="dazzTitle"></input>
       <textarea ref={descRef} rows="4" cols="50" placeholder="Describe this dazzle. This text will be paired with the other dazzle description when it's added to the gallery, and appear when the user hovers over the piece." ref={descRef} className="pm"></textarea>
-      <button className="pm btn" onClick={handleSubmit}>{`add to backlog and send ${id} beacon`}</button>
+      <button className="pm btn" onClick={handleSubmit}>{`add to backlog`}</button>
     </div>
   )
 }
